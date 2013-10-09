@@ -61,6 +61,9 @@ switch to the board layout view of that design.
 2) File->Import each of the .brd files above for A, B, and C respectively
 2a) When you import a design it lets you place it somewhere on your board layout much as if 
 you were placing a component on the board, but you can place the entire imported design instead.
+2b) Notice that when you import the .brd clone, its schematic comes right along with it as a 
+new sheet in your design which is nice to keep the instances all separated and easy to manage 
+within EAGLE.
 
 3) Route your board normally from there.  It's useful to provide some connection points on 
 your sub-module in the board layout before you clone it - just makes it someone easier to 
