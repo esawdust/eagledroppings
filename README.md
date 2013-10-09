@@ -19,8 +19,11 @@ In short, eagleclone, creates multiple instances of a particular layout so you d
 have to re-layout the same module multiple times or fuss with renaming through the EAGLE
 import dialog box.
 
-Prerequisites are an installed version of Ruby 2.0.0 and a .brd and .sch EAGLE file of 
-the design you want to replicate.  
+Prerequisites are: 
+1) Ruby 2.0.0 
+2) EAGLE 6.x .brd and .sch EAGLE file of the design you want to replicate.  
+
+eagleclone assumes the .brd and .sch are the XML files from EAGLE 6.x
 
 Example usage
 -------------
