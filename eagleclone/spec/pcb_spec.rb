@@ -1,20 +1,29 @@
-require_relative '../eaglepcb'
+$:.unshift File.join(File.dirname(__FILE__))            # add current dir to the load path
+$:.unshift File.join("#{File.dirname(__FILE__)}/../lib")   # add relative lib dir to the load path
+
+require 'eaglepcb'
 
 describe EaglePCB do
+
+  before :each do
+    @testpcb = "./spec/test.brd"
+    @testschematic = "./spec/test.sch"
+  end
+
   it "should be a brd design file" do
-    board_design = File.open("test.brd","r").read
+    board_design = File.open(@testpcb,"r").read
     pcb = EaglePCB.new( board_design )
     pcb.isPCB == true
   end
 
   it "should know it was given an invalid board file" do
-    board_design = File.open("test.sch","r").read
+    board_design = File.open( @testschematic,"r").read
     pcb = EaglePCB.new( board_design )
     pcb.isPCB  == false
   end
 
   it "should be able to locate all the parts in a board file" do
-    board_design = File.open("test.brd","r").read
+    board_design = File.open(@testpcb,"r").read
     pcb = EaglePCB.new( board_design )
     parts_list = pcb.parts
     parts_list.should have(20).items
@@ -30,7 +39,7 @@ describe EaglePCB do
   end
 
   it "should be able to locate all the signals in a board file" do
-    board_design = File.open("test.brd","r").read
+    board_design = File.open(@testpcb,"r").read
     pcb = EaglePCB.new( board_design )
     signals_list = pcb.signals
     signals_list.should have(13).items
@@ -53,7 +62,7 @@ describe EaglePCB do
 
   it "should be able to clone parts" do
 
-    pcb = EaglePCB.new( File.open("test.brd","r").read )
+    pcb = EaglePCB.new( File.open(@testpcb,"r").read )
     pcb.clone("-XYZ")
 
     parts_list = pcb.parts
@@ -71,7 +80,7 @@ describe EaglePCB do
   end
 
   it "should be able to clone signals" do
-    pcb = EaglePCB.new( File.open("test.brd","r").read )
+    pcb = EaglePCB.new( File.open(@testpcb,"r").read )
     pcb.clone("-XYZ")
 
     signals_list = pcb.signals
@@ -94,7 +103,7 @@ describe EaglePCB do
   end
 
   it "should be able to clone contact refs" do
-    pcb = EaglePCB.new( File.open("test.brd","r").read )
+    pcb = EaglePCB.new( File.open(@testpcb,"r").read )
     pcb.clone("-XYZ")
 
     contacts_list = pcb.contacts
@@ -109,7 +118,7 @@ describe EaglePCB do
   end
 
   it "should be able to clone a new file for Eagle" do
-    pcb = EaglePCB.new( File.open("test.brd","r").read )
+    pcb = EaglePCB.new( File.open(@testpcb,"r").read )
     pcb.clone("-ABC")
 
     File.new("test-conversion.brd","w").write(pcb.board_doc.to_s)

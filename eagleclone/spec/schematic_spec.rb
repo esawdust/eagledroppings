@@ -1,21 +1,29 @@
+$:.unshift File.join(File.dirname(__FILE__))            # add current dir to the load path
+$:.unshift File.join("#{File.dirname(__FILE__)}/../lib")   # add relative lib dir to the load path
 
-require_relative '../eagleschematic'
+require 'eagleschematic'
 
 describe EagleSchematic do
+
+  before :each do
+    @testpcb = "./spec/test.brd"
+    @testschematic = "./spec/test.sch"
+  end
+
   it "should be a sch design file" do
-    board_design = File.open("test.sch","r").read
+    board_design = File.open(@testschematic,"r").read
     schematic = EagleSchematic.new( board_design )
     schematic.isSchematic == true
   end
 
   it "should know it was given an invalid schematic file" do
-    board_design = File.open("test.brd","r").read
+    board_design = File.open(@testpcb,"r").read
     schematic = EagleSchematic.new( board_design )
     schematic.isSchematic == false
   end
 
   it "should be able to locate all the parts in a schematic file" do
-    board_design = File.open("test.sch","r").read
+    board_design = File.open(@testschematic,"r").read
     schematic = EagleSchematic.new( board_design )
     parts_list = schematic.parts
     parts_list.should have(35).items
@@ -30,7 +38,7 @@ describe EagleSchematic do
   end
 
   it "should be able to clone parts" do
-    board_design = File.open("test.sch","r").read
+    board_design = File.open(@testschematic,"r").read
     schematic = EagleSchematic.new( board_design )
     schematic.clone("-XYZ")
 
@@ -47,7 +55,7 @@ describe EagleSchematic do
   end
 
   it "should be able to clone pinrefs" do
-    board_design = File.open("test.sch","r").read
+    board_design = File.open(@testschematic,"r").read
     schematic = EagleSchematic.new( board_design )
     schematic.clone("-XYZ")
 
@@ -65,7 +73,7 @@ describe EagleSchematic do
   end
 
   it "should be able to clone pinrefs" do
-    board_design = File.open("test.sch","r").read
+    board_design = File.open(@testschematic,"r").read
     schematic = EagleSchematic.new( board_design )
     schematic.clone("-XYZ")
 
@@ -83,7 +91,7 @@ describe EagleSchematic do
   end
 
   it "should be able to clone nets" do
-    board_design = File.open("test.sch","r").read
+    board_design = File.open(@testschematic,"r").read
     schematic = EagleSchematic.new( board_design )
     schematic.clone("-XYZ")
 
@@ -99,7 +107,7 @@ describe EagleSchematic do
   end
 
   it "should be able to clone a new file for Eagle" do
-    schematic = EagleSchematic.new( File.open("test.sch","r").read )
+    schematic = EagleSchematic.new( File.open(@testschematic,"r").read )
     schematic.clone("-ABC")
 
     File.new("test-conversion.sch","w").write(schematic.board_doc.to_s)
