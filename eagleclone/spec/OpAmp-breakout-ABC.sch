@@ -3593,7 +3593,7 @@ Basic schematic elements and footprints for 0603, 1206, and PTH 1/10th watt (sma
 <pinref part="R8-ABC" gate="G$1" pin="2"/>
 </segment>
 </net>
-<net name="VCC-ABC" class="0">
+<net name="VCC" class="0">
 <segment>
 <wire x1="109.22" y1="101.6" x2="106.68" y2="101.6" width="0.1524" layer="91"/>
 <wire x1="106.68" y1="101.6" x2="106.68" y2="104.14" width="0.1524" layer="91"/>

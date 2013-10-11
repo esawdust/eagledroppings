@@ -1165,7 +1165,7 @@ design rules under a new name.</description>
 <wire x1="7.62" y1="11.811" x2="9.144" y2="11.811" width="0.254" layer="1"/>
 <wire x1="9.144" y1="11.811" x2="10.16" y2="10.795" width="0.254" layer="1"/>
 </signal>
-<signal name="VCC-ABC">
+<signal name="VCC">
 <contactref element="JP1-ABC" pad="1"/>
 <contactref element="C2-ABC" pad="1"/>
 <contactref element="IC1-ABC" pad="8"/>

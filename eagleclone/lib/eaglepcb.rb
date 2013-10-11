@@ -55,8 +55,17 @@ class EaglePCB
 
   def replace_all_signals
     signal_list = board_doc.xpath("//signal")
+
+    # don't translate power names since these are very likely to be shared across designs
+    # TODO - should probably create a comprehensive list of these, put them in a configuration file read at runtime
     signal_list.each do | element |
-      if (element.attributes["name"].value != "3.3V" && element.attributes["name"].value != "GND" )
+      if (element.attributes["name"].value != "3.3V" &&
+          element.attributes["name"].value != "5V" &&
+          element.attributes["name"].value != "GND" &&
+          element.attributes["name"].value != "VCC" &&
+          element.attributes["name"].value != "VDD" &&
+          element.attributes["name"].value != "VSS"
+      )
         element.attributes["name"].value = element.attributes["name"].value + @clone_postfix
       end
     end

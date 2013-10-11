@@ -125,9 +125,13 @@ describe EagleSchematic do
 
     ["GND", "N$2-XYZ", "N$7-XYZ", "IN1-XYZ", "OUT1-XYZ",
      "N$4-XYZ", "N$5-XYZ", "IN-XYZ", "OUT-XYZ", "N$1-XYZ",
-     "N$3-XYZ", "VCC-XYZ"].each do | thing |
+     "N$3-XYZ", "VCC"].each do | thing |
       @names.should include(thing)
     end
+
+    # make sure power stuff doesn't get translated
+    @names.should_not include("VCC-XYZ")
+    @names.should_not include("GND-XYZ")
   end
 
   it "should be able to clone a new file for Eagle" do

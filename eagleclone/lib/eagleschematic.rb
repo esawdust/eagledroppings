@@ -83,10 +83,18 @@ class EagleSchematic
   def replace_all_nets
     net_list = nets
     net_list.each do |net|
-       if (net.attributes["name"].value != "3.3V" && net.attributes["name"].value != "GND" )
+        # don't translate power names since these are very likely to be shared across designs
+        # TODO - should probably create a comprehensive list of these, put them in a configuration file read at runtime
+        if (net.attributes["name"].value != "3.3V" &&
+            net.attributes["name"].value != "5V" &&
+            net.attributes["name"].value != "GND" &&
+            net.attributes["name"].value != "VCC" &&
+            net.attributes["name"].value != "VDD" &&
+            net.attributes["name"].value != "VSS"
+          )
          net.attributes["name"].value = net.attributes["name"].value + @clone_postfix
          #puts "net, #{net.attributes['name'].value}"
-       end
+        end
     end
   end
 

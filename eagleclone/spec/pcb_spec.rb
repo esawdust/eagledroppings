@@ -94,7 +94,7 @@ describe EaglePCB do
     end
 
     ["GND", "N$2-XYZ", "N$7-XYZ", "IN1-XYZ", "OUT1-XYZ", "N$4-XYZ",
-     "N$5-XYZ", "IN-XYZ", "OUT-XYZ", "N$1-XYZ", "N$3-XYZ", "VCC-XYZ"].each do | thing |
+     "N$5-XYZ", "IN-XYZ", "OUT-XYZ", "N$1-XYZ", "N$3-XYZ", "VCC"].each do | thing |
       @names.should include(thing)
     end
 
