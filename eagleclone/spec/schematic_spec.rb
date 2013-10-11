@@ -5,9 +5,10 @@ require 'eagleschematic'
 
 describe EagleSchematic do
 
+  # use the Sparkfun OpAmp breakout board as a test fixture
   before :each do
-    @testpcb = "./spec/test.brd"
-    @testschematic = "./spec/test.sch"
+    @testpcb = "./spec/OpAmpBreakout-v16.brd"
+    @testschematic = "./spec/OpAmpBreakout-v16.sch"
   end
 
   it "should be a sch design file" do
@@ -26,15 +27,17 @@ describe EagleSchematic do
     board_design = File.open(@testschematic,"r").read
     schematic = EagleSchematic.new( board_design )
     parts_list = schematic.parts
-    parts_list.should have(35).items
+    parts_list.should have(22).items
     @names = []
     parts_list.each do | part |
       @names << part.attributes["name"].to_s
     end
 
-    @names.should include("AMP1.1")
-    @names.should include("C1.4")
-    @names.should include("LMV932-1.1")
+    ["FRAME1", "R1", "R2", "R3", "R4", "R5", "R6", "C1", "C2", "C3",
+     "GND6", "C5", "C6", "GND1", "JP1", "IC1", "U$3", "R7", "GND2",
+     "GND3", "R8", "R9"].each do | thing |
+      @names.should include(thing)
+    end
   end
 
   it "should be able to clone parts" do
@@ -43,15 +46,18 @@ describe EagleSchematic do
     schematic.clone("-XYZ")
 
     parts_list = schematic.parts
-    parts_list.should have(35).items
+    parts_list.should have(22).items
     @names = []
     parts_list.each do | part |
       @names << part.attributes["name"].to_s
     end
 
-    @names.should include("AMP1.1-XYZ")
-    @names.should include("C1.4-XYZ")
-    @names.should include("LMV932-1.1-XYZ")
+    ["FRAME1-XYZ", "R1-XYZ", "R2-XYZ", "R3-XYZ", "R4-XYZ", "R5-XYZ", "R6-XYZ",
+     "C1-XYZ", "C2-XYZ", "C3-XYZ", "GND6-XYZ", "C5-XYZ", "C6-XYZ", "GND1-XYZ",
+     "JP1-XYZ", "IC1-XYZ", "U$3-XYZ", "R7-XYZ", "GND2-XYZ", "GND3-XYZ", "R8-XYZ",
+     "R9-XYZ"].each do | thing |
+      @names.should include(thing)
+     end
   end
 
   it "should be able to clone pinrefs" do
@@ -60,15 +66,22 @@ describe EagleSchematic do
     schematic.clone("-XYZ")
 
     pinref_list = schematic.pin_refs
-    pinref_list.should have(66).items
+    pinref_list.should have(45).items
     @names = []
     pinref_list.each do | pinref |
       @names << pinref.attributes["part"].to_s
     end
 
-    @names.should include("AMP1.1-XYZ")
-    @names.should include("C1.4-XYZ")
-    @names.should include("LMV932-1.1-XYZ")
+    ["R6-XYZ", "GND6-XYZ", "R7-XYZ", "GND1-XYZ", "JP1-XYZ",
+     "R3-XYZ", "GND2-XYZ", "C2-XYZ", "GND3-XYZ", "IC1-XYZ",
+     "R2-XYZ", "C1-XYZ", "R1-XYZ", "IC1-XYZ", "R5-XYZ", "C3-XYZ",
+     "R4-XYZ", "IC1-XYZ", "R2-XYZ", "C5-XYZ", "R1-XYZ", "IC1-XYZ",
+     "R7-XYZ", "C1-XYZ", "C6-XYZ", "R5-XYZ", "C6-XYZ", "R7-XYZ",
+     "JP1-XYZ", "C5-XYZ", "JP1-XYZ", "C3-XYZ", "R4-XYZ", "IC1-XYZ",
+     "IC1-XYZ", "R6-XYZ", "R9-XYZ", "R3-XYZ", "IC1-XYZ", "R8-XYZ",
+     "JP1-XYZ", "C2-XYZ", "IC1-XYZ", "R8-XYZ", "R9-XYZ"].each do | thing |
+        @names.should include(thing)
+      end
 
   end
 
@@ -78,15 +91,23 @@ describe EagleSchematic do
     schematic.clone("-XYZ")
 
     pinref_list = schematic.pin_refs
-    pinref_list.should have(66).items
+    pinref_list.should have(45).items
     @names = []
     pinref_list.each do | pinref |
       #puts "pinref:#{pinref.inspect}"
       @names << pinref.attributes["part"].to_s
     end
 
-    @names.should include("C1.5-XYZ")
-    @names.should include("LMV932-1.1-XYZ")
+    ["R6-XYZ", "GND6-XYZ", "R7-XYZ", "GND1-XYZ", "JP1-XYZ", "R3-XYZ",
+     "GND2-XYZ", "C2-XYZ", "GND3-XYZ", "IC1-XYZ", "R2-XYZ", "C1-XYZ",
+     "R1-XYZ", "IC1-XYZ", "R5-XYZ", "C3-XYZ", "R4-XYZ", "IC1-XYZ",
+     "R2-XYZ", "C5-XYZ", "R1-XYZ", "IC1-XYZ", "R7-XYZ", "C1-XYZ",
+     "C6-XYZ", "R5-XYZ", "C6-XYZ", "R7-XYZ", "JP1-XYZ", "C5-XYZ",
+     "JP1-XYZ", "C3-XYZ", "R4-XYZ", "IC1-XYZ", "IC1-XYZ", "R6-XYZ",
+     "R9-XYZ", "R3-XYZ", "IC1-XYZ", "R8-XYZ", "JP1-XYZ", "C2-XYZ",
+     "IC1-XYZ", "R8-XYZ", "R9-XYZ"].each do | thing |
+        @names.should include(thing)
+      end
 
   end
 
@@ -96,21 +117,34 @@ describe EagleSchematic do
     schematic.clone("-XYZ")
 
     net_list = schematic.nets
-    net_list.should have(13).items
+    net_list.should have(12).items
     @names = []
     net_list.each do | pinref |
       @names << pinref.attributes["name"].to_s
     end
 
-    @names.should include("N$5-XYZ")
-    @names.should include ("AMPREF-XYZ")
+    ["GND", "N$2-XYZ", "N$7-XYZ", "IN1-XYZ", "OUT1-XYZ",
+     "N$4-XYZ", "N$5-XYZ", "IN-XYZ", "OUT-XYZ", "N$1-XYZ",
+     "N$3-XYZ", "VCC-XYZ"].each do | thing |
+      @names.should include(thing)
+    end
   end
 
   it "should be able to clone a new file for Eagle" do
     schematic = EagleSchematic.new( File.open(@testschematic,"r").read )
     schematic.clone("-ABC")
 
-    File.new("test-conversion.sch","w").write(schematic.board_doc.to_s)
+    File.new("./spec/OpAmp-breakout-ABC.sch","w").write(schematic.board_doc.to_s)
+  end
+
+  it "should generate board files that match exactly pre-validated files" do
+    $result = `diff -q ./spec/OpAmp-breakout-ABC.sch ./spec/OpAmp-expected.sch`
+    $result == ""
+  end
+
+  it "should insure that generated files are not the same as each other" do
+    $result = `diff -q ./spec/OpAmp-breakout-ABC.sch ./spec/OpAmp-breakout-ABC.brd`
+    $result =~ /differ/
   end
 
 end
