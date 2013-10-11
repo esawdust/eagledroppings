@@ -1,3 +1,9 @@
+=begin
+  cliopts.rb by Landon Cox
+
+  command line parsing to set parameters for the translation
+
+=end
 require 'optparse'
 
 @options = {}

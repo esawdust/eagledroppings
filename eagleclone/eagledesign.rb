@@ -1,6 +1,12 @@
+=begin
+ eagledesign.rb by Landon Cox
 
-require 'pcb'
-require 'schematic'
+  class to implement the translation of Eagle PCB and schematics so they
+  continue to be matched when a new instance of the design is made
+=end
+
+require 'eaglepcb'
+require 'eagleschematic'
 
 class EagleDesign
 

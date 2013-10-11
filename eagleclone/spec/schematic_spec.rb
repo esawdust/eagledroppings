@@ -1,5 +1,5 @@
 
-require_relative '../schematic'
+require_relative '../eagleschematic'
 
 describe EagleSchematic do
   it "should be a sch design file" do

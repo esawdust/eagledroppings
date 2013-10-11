@@ -1,4 +1,4 @@
-require_relative '../pcb'
+require_relative '../eaglepcb'
 
 describe EaglePCB do
   it "should be a brd design file" do

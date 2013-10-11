@@ -1,3 +1,8 @@
+=begin
+  eagleschematic.rb by Landon Cox
+
+  Class to implement the schematic parts translation to a new instance of the design
+=end
 
 require 'nokogiri'
 

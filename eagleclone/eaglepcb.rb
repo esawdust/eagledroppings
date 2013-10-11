@@ -1,3 +1,8 @@
+=begin
+ eaglepcb.rb by Landon Cox
+
+  class to implement the translation of the Eagle PCB file
+=end
 
 require 'nokogiri'
 
