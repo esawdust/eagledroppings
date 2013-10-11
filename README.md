@@ -6,7 +6,7 @@ CadSoft's EAGLE is a very useful and affordable tool for makers and pros alike, 
 face it, there are some gaping holes in its functionality.  These utilities aim to fill 
 those gaps until such a time as CadSoft does it better.
 
-Please see http://www.inhale3d.com for further information
+Please see http://www.inhale3d.com for further explanation and demonstration videos.
 
 eagleclone
 ----------
@@ -69,7 +69,7 @@ new sheet in your design which is nice to keep the instances all separated and e
 within EAGLE.
 
 3) Route your board normally from there.  It's useful to provide some connection points on 
-your sub-module in the board layout before you clone it - just makes it someone easier to 
+your sub-module in the board layout before you clone it - just makes it somewhat easier to 
 treat each module like a self-contained layout you just need to hook up to the rest of your design.
 
 Apache Open Source License
