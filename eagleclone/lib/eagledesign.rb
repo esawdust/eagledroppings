@@ -13,13 +13,13 @@ class EagleDesign
   attr_accessor :pcb_contents, :schematic_contents, :clone_postfix, :basename
 
   def initialize filename
-    @basename = File.basename(filename)
-    pcb = @basename + ".brd"
-    schematic = @basename + ".sch"
+    @basename = filename
+
+    pcb = filename + ".brd"
+    schematic = filename + ".sch"
 
     @pcb_contents = File.open( pcb, "r").read
     @schematic_contents = File.open( schematic, "r").read
-
   end
 
   def clone_design clone_postfix
