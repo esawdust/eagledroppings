@@ -34,10 +34,23 @@ board and schematic such that it can be imported multiple times into a design wi
 having to tediously fix-up all the nets, component names, and everything else to create
 a new instance of the module within your design.  
 
+Imagine you are planning to create an ethernet hub and you have designed the circuit that
+is the jack and magnetics for one port as well as the ethernet hardware chip and supporting passive
+components.  Not only that, but you made a nice, tight layout you really like.  With EAGLE,
+if you copy and pasted the schematic parts you'd end up with a heap of parts that you 
+had to layout again.  Alternativley, in the board, if you copied your layout, you'd be 
+required to rename all the components and nets.  
+
+But with eagleclone, you can simply clone your sch and brd files as many times as needed
+and create an 8-port hub without having to interact with EAGLE's net-renaming, component renaming
+dialog box for every wire in your design.
+
 This is similar to but a little different than panelizing a design. eagleclone is really 
 for taking a fragment of a design, say an amplifier design and creating multiple channels
-each with its own amplifier instance.  What is missing is the ability to simply copy and
-paste a selected portion of a design in a way that pulls through all the components, nets,
+each with its own amplifier instance.  
+
+What is missing from EAGLE (the EAGLE dropping) is the ability to simply copy and paste 
+a selected portion of a design in a way that pulls through all the components, nets,
 pins, and board layout for that part of the design.
 
 You can import a design into Eagle but if it's the second instance of the design, you're
