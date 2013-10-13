@@ -34,12 +34,23 @@ board and schematic such that it can be imported multiple times into a design wi
 having to tediously fix-up all the nets, component names, and everything else to create
 a new instance of the module within your design.  
 
-Imagine you are planning to create an ethernet hub and you have designed the circuit that
-is the jack and magnetics for one port as well as the ethernet hardware chip and supporting passive
-components.  Not only that, but you made a nice, tight layout you really like.  With EAGLE,
-if you copy and pasted the schematic parts you'd end up with a heap of parts that you 
-had to layout again.  Alternativley, in the board, if you copied your layout, you'd be 
-required to rename all the components and nets.  
+Imagine you're designing a multi-port circuit board, say multi-input amplifier, so you 
+start by designing a single channel, schematic, and board layout for that channel. 
+Now, you can use EAGLE clone to make as many instances of this design as you want 
+where an instance includes both schematic and board layout, but each instance is 
+uniquely named so each channel doesn't conflict with the other when you import it into
+your master design.
+With EAGLE, if you copy and paste the schematic parts, you'd end up with a heap of parts in
+the board layout that you would have to layout again.  Alternativley, in the board, 
+if you copied your layout, you'd be required to rename all the components and nets. Either
+way, EAGLE just doesn't clone sub-systems very well at all. 
+
+Another reason cloning the design like this is nice is if you need to make 
+a change to the schematic or board layout, you can do it in the original module, reclone and 
+import them.  In other words, with EAGLE, if you have to tediously fix up nets and part names
+after importing a design, you're likely not to do it again if you need to change it, so you
+either don't change it, or you change it in the derivative work, but not the reusable module,
+or you spend a lot of time re-fixing the nets.
 
 But with eagleclone, you can simply clone your sch and brd files as many times as needed
 and create an 8-port hub without having to interact with EAGLE's net-renaming, component renaming
@@ -165,13 +176,14 @@ you know you're good to go.
 
 ```bash
 eagleclone $ rspec
-................
+....................
 
-Finished in 0.15284 seconds
-16 examples, 0 failures
-eagleclone $
+Finished in 0.48173 seconds
+20 examples, 0 failures
 ```
 
-TODO: Make eagleclone itself a gem.
-
+TODO
+----
+1) Make eagleclone a gem.
+2) Add feature to clone one design multiple times into one file (vs one file per clone.)
 
