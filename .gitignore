@@ -16,4 +16,6 @@ tmp
 .yardoc
 _yardoc
 doc/
-
+*.?#?
+*.bak
+*.orig

@@ -3,13 +3,13 @@ eagledroppings
 
 Useful utilities from Landon Cox / Inhale3D.com to use with CadSoft Eagle PCB Design Software.
 CadSoft's EAGLE is a very useful and affordable tool for makers and pros alike, but lets
-face it, there are some gaping holes in its functionality.  These utilities aim to fill 
-those gaps until such a time as CadSoft does it better.
+face it, there are some gaping holes in its functionality (the droppings), 
+particularly for the UI.  These utilities aim to fill those gaps until such a 
+time as CadSoft does it better.
 
 Please see http://www.inhale3d.com for further explanation and demonstration videos.
 
 Landon Cox, elandon at esawdust.com
-
 
 Apache Open Source License
 --------------------------
