@@ -37,7 +37,9 @@ This is similar to but a little different than panelizing a design.
 placement, but *eagleclone* is really intended to clone fragments to create submodules
 that will ultimately be integrated within a larger design.
 
-[Examle Usage](#exampleusage)
+[Example Usage](#example-usage)
+[Use Cases](#use-cases)
+[Installation](#installation-on-os-x-or-linux)
 
 Alternative
 -----------
@@ -110,7 +112,7 @@ Prerequisites are:
 2) EAGLE 6.x .brd and .sch EAGLE file of the design you want to replicate.  
 3) Nokogiri
 
-<a id="exampleusage"></a>Example Usage
+Example Usage
 -------------
 
 ```bash
