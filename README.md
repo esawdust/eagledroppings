@@ -11,7 +11,7 @@ board and schematic such that it can be imported multiple times into a design wi
 having to tediously fix-up all the nets, component names, and everything else to create
 a new instance of the module within your design.  
 
-Visually, it lets you take a schematic and board layout and clone it as many times 
+The visual explanation: it lets you take a schematic and board layout and clone it as many times 
 as you would like.  Using a Sparkfun OpAmp breakout board as an example (design released 
 under Creative Commons), turn a single design:
 
