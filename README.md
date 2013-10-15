@@ -11,22 +11,26 @@ board and schematic such that it can be imported multiple times into a design wi
 having to tediously fix-up all the nets, component names, and everything else to create
 a new instance of the module within your design.  
 
-The visual explanation: it lets you take a schematic and board layout and clone it as many times 
-as you would like.  Using a Sparkfun OpAmp breakout board as an example (design released 
-under Creative Commons), turn a single design:
+The visual explanation: eagleclone lets you take a schematic and board layout and clone it as many times 
+as you would like.  Using a [Sparkfun OpAmp breakout board](https://www.sparkfun.com/products/9816) as an example 
+(Sparkfun design released under Creative Commons), turn a single design:
 
 ![Alt text](images/OriginalBoardLayout-SparkfunBOB-09816-1.jpg)
 
-into multiple instances on the same board:
+into multiple instances:
 
 ![Alt text](images/image3.jpg)
 
 where all you have left is to route the design into the master board design (route airwires.)
 
 For me, I find it easier to layout a board by laying out modules like this first and providing
-consistent entry or exit points on the module and cloning when I need multiple instances. The 
-resulting boards tend to be more consistent. Hand assembling the boards is faster as well
-because of consistent placement.
+consistent entry or exit points on the module and cloning when I need multiple instances. 
+This approach is more conducive to setting up star wired power routing on a board and even
+separate ground planes per instance if need be.
+
+The resulting boards tend to be more consistent. Hand assembling the boards is faster as well
+because of consistent placement, but the main thing is design productivity compared to the 
+alternatives provided by EAGLE.
 
 Alternative
 -----------
