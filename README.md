@@ -1,7 +1,7 @@
 eagledroppings
 ==============
 
-Useful utilities from Landon Cox / Inhale3D.com to use with CadSoft Eagle PCB Design Software.
+Useful utilities from Landon Cox to use with CadSoft Eagle PCB Design Software.
 Apache Open Source License.  Landon Cox, elandon at esawdust.com
 
 eagleclone
