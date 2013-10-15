@@ -2,10 +2,6 @@ eagledroppings
 ==============
 
 Useful utilities from Landon Cox / Inhale3D.com to use with CadSoft Eagle PCB Design Software.
-CadSoft's EAGLE is a very useful and affordable tool for makers and pros alike, but lets
-face it, there are some gaping holes in its functionality (the droppings), 
-particularly for the UI.  These utilities aim to fill those gaps until such a 
-time as CadSoft does it better.
 
 Please see http://www.inhale3d.com for further explanation and demonstration videos.
 
@@ -34,6 +30,19 @@ board and schematic such that it can be imported multiple times into a design wi
 having to tediously fix-up all the nets, component names, and everything else to create
 a new instance of the module within your design.  
 
+Visually, it lets you take a design like this from Sparkfun (their OpAmp breakout board)
+and clone it as many times as you would like. Turn:
+
+![alt text](https://github.com/esawdust/eagledroppings/blob/master/images/OriginalBoardLayout-SparkfunBOB-09816-1.jpg "Board layout")
+
+into this:
+
+![alt text](https://github.com/esawdust/eagledroppings/blob/master/images/image3.jpg "replicated designs")
+
+where all you have left is to route the design into the master board design (route airwires.)
+
+Use Cases
+---------
 Imagine you're designing a multi-port circuit board, say multi-input amplifier, so you 
 start by designing a single channel, schematic, and board layout for that channel. 
 Now, you can use EAGLE clone to make as many instances of this design as you want 
