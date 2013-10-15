@@ -4,14 +4,14 @@ eagledroppings
 Useful utilities from Landon Cox / Inhale3D.com to use with CadSoft Eagle PCB Design Software.
 Apache Open Source License.  Landon Cox, elandon at esawdust.com
 
-eagleclone
+_eagleclone_
 ----------
-To start things off, I'm introducing, eagleclone, a utility that lets you clone or replicate a 
+To start things off, I'm introducing, _eagleclone_, a utility that lets you clone or replicate a 
 board and schematic such that it can be imported multiple times into a design without
 having to tediously fix-up all the nets, component names, and everything else to create
 a new instance of the module within your design.  
 
-The visual explanation: eagleclone lets you take a schematic and board layout and clone it as many times 
+The visual explanation: _eagleclone_ lets you take a schematic and board layout and clone it as many times 
 as you would like.  Using a [Sparkfun OpAmp breakout board](https://www.sparkfun.com/products/9816) as an example 
 (Sparkfun design released under Creative Commons), turn a single design:
 
@@ -31,6 +31,11 @@ separate ground planes per instance if need be.
 The resulting boards tend to be more consistent. Hand assembling the boards is faster as well
 because of consistent placement, but the main thing is design productivity compared to the 
 alternatives provided by EAGLE.
+
+This is similar to but a little different than panelizing a design. 
+_eagleclone_ could be used for panelizing a design allowing you to micro-manage design
+placement, but _eagleclone_ is really intended to clone fragments to create submodules
+that will ultimately be integrated within a larger design.
 
 Alternative
 -----------
@@ -53,13 +58,13 @@ import the design more than once, you have to go through this process for each i
 also not very productive.
 
 Eagleclone deals with this stuff for you, so after you import a clone, there's no re-mapping
-of pins and parts to do - eagleclone has already renamed everything.
+of pins and parts to do - _eagleclone_ has already renamed everything.
 
 Use Cases
 ---------
 Imagine you're designing a multi-port circuit board, say multi-input amplifier, so you 
 start by designing a single channel, schematic, and board layout for that channel. 
-Now, you can use eagleclone to make as many instances of this design as you want 
+Now, you can use _eagleclone_ to make as many instances of this design as you want 
 where an instance includes both schematic and board layout, but each instance is 
 uniquely named so each channel doesn't conflict with the other when you import it into
 your master design.
@@ -75,11 +80,11 @@ after importing a design, you're likely not to do it again if you need to change
 either don't change it, or you change it in the derivative work, but not the reusable module,
 or you spend a lot of time re-fixing the nets.
 
-But with eagleclone, you can simply clone your sch and brd files as many times as needed
+But with _eagleclone_, you can simply clone your sch and brd files as many times as needed
 and create an 8-port hub without having to interact with EAGLE's net-renaming, component renaming
 dialog box for every wire in your design.
 
-This is similar to but a little different than panelizing a design. eagleclone is really 
+This is similar to but a little different than panelizing a design. _eagleclone_ is really 
 for taking a fragment of a design, say an amplifier design and creating multiple channels
 each with its own amplifier instance.  
 
@@ -89,9 +94,9 @@ pins, and board layout for that part of the design.
 
 You can import a design into Eagle but if it's the second instance of the design, you're
 forced to rename all the components and nets to not conflict with those already there.  This is 
-obviously a very tedious and error-prone process and is what eagleclone alleviates.
+obviously a very tedious and error-prone process and is what _eagleclone_ alleviates.
 
-In short, eagleclone, creates multiple instances of a particular layout so you don't 
+In short, _eagleclone_, creates multiple instances of a particular layout so you don't 
 have to re-layout the same module multiple times or fuss with renaming through the EAGLE
 import dialog box.
 
@@ -107,9 +112,9 @@ Example usage
 -------------
 
 ```bash
-$ ./eagleclone.rb --help
+$ ./_eagleclone_.rb --help
 
-Usage: eagleclone -d design_to_clone -p clone_postfix
+Usage: _eagleclone_ -d design_to_clone -p clone_postfix
     -d, --design DESIGN              specify design file without file extension
     -p, --postfix POSTFIX            specify the postfix to append to all parts, signals, etc
     -h, --help                       Show this message
@@ -120,9 +125,9 @@ for PCB board and schematic, respectively.  You can create new three new instanc
 called A, B, and C, as follows:
 
 ```bash
-$ ./eagleclone.rb -d test -p A
-$ ./eagleclone.rb -d test -p B
-$ ./eagleclone.rb -d test -p C
+$ ./_eagleclone_.rb -d test -p A
+$ ./_eagleclone_.rb -d test -p B
+$ ./_eagleclone_.rb -d test -p C
 ```
 This creates three new instances of the test design that are 'A', 'B', and 'C' instances of the original design:
 ```bash
@@ -135,8 +140,8 @@ testC.sch
 ```
 
 The files are created in the same directory in which the original design exists.  The original design
-is never modified and eagleclone is idempotent (it will overwrite any files previously generated by
-eagleclone.) At this stage, you have three new designs, each uniquely named 
+is never modified and _eagleclone_ is idempotent (it will overwrite any files previously generated by
+_eagleclone_.) At this stage, you have three new designs, each uniquely named 
 
 To use these replicated designs:
 
@@ -157,7 +162,7 @@ treat each module like a self-contained layout you just need to hook up to the r
 How it works
 ------------
 
-eagleclone uses Nokogiri, a Ruby gem which knows how to read and write XML files, to ingest the
+_eagleclone_ uses Nokogiri, a Ruby gem which knows how to read and write XML files, to ingest the
 EAGLE board and schematic files.  Then using XPath queries, it identifies all the nodes in the XML
 files which need to be renamed or replaced with new instance names derived from the original name plus
 the instance parameter given by the -p option on the command line.
@@ -167,7 +172,7 @@ instance information in it.  The new file is effectively a completely independen
 
 Caveats
 -------
-eagleclone looks for certain power supply-related signals such as 3.3V and GND and does not replace
+_eagleclone_ looks for certain power supply-related signals such as 3.3V and GND and does not replace
 those.  It's assumed each design derived from the original will use the same power and ground signals
 as the original design.  This makes the instances easier to import and requires no fixup after import.
 
@@ -185,22 +190,22 @@ $ source ~/.profile
 $ rvm install 2.0.0
 ```
 
-Then from the directory in which you installed eagleclone, install the requisite gems
-for eagleclone:
+Then from the directory in which you installed _eagleclone_, install the requisite gems
+for _eagleclone_:
 
 ```bash
-eagleclone $ bundle install
+_eagleclone_ $ bundle install
 ```
 to install the prerequisite gems.
 
 RSpec tests have been provided if you want to run those to insure you have everything 
-installed correctly and the eagleclone utility is working properly.
+installed correctly and the _eagleclone_ utility is working properly.
 
 Run rspec by itself on the command line and the tests will run.  If you see '0 failures'
 you know you're good to go.
 
 ```bash
-eagleclone $ rspec
+_eagleclone_ $ rspec
 ....................
 
 Finished in 0.48173 seconds
@@ -209,7 +214,7 @@ Finished in 0.48173 seconds
 
 TODO
 ----
-1) Make eagleclone a gem.
+1) Make _eagleclone_ a gem.
 2) Add feature to clone one design multiple times into one file (vs one file per clone.)
 
 
