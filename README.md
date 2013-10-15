@@ -33,11 +33,11 @@ a new instance of the module within your design.
 Visually, it lets you take a design like this from Sparkfun (their OpAmp breakout board)
 and clone it as many times as you would like. Turn:
 
-![Alt text](/esawdust/eagledroppings/blob/master/images/OriginalBoardLayout-SparkfunBOB-09816-1.jpg)
+![Alt text](images/OriginalBoardLayout-SparkfunBOB-09816-1.jpg)
 
 into this:
 
-![Alt text](/esawdust/eagledroppings/blob/master/images/image3.jpg)
+![Alt text](images/image3.jpg)
 
 where all you have left is to route the design into the master board design (route airwires.)
 
