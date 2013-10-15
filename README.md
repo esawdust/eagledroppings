@@ -37,6 +37,8 @@ This is similar to but a little different than panelizing a design.
 placement, but *eagleclone* is really intended to clone fragments to create submodules
 that will ultimately be integrated within a larger design.
 
+[Examle Usage](#exampleusage)
+
 Alternative
 -----------
 In EAGLE, you can copy and paste a design or portion of a design from the schematic view, but
@@ -108,11 +110,11 @@ Prerequisites are:
 2) EAGLE 6.x .brd and .sch EAGLE file of the design you want to replicate.  
 3) Nokogiri
 
-Example usage
+<a id="exampleusage"></a>Example Usage
 -------------
 
 ```bash
-$ ./*eagleclone*.rb --help
+$ ./eagleclone.rb --help
 
 Usage: *eagleclone* -d design_to_clone -p clone_postfix
     -d, --design DESIGN              specify design file without file extension
@@ -172,8 +174,10 @@ instance information in it.  The new file is effectively a completely independen
 
 Caveats
 -------
-*eagleclone* looks for certain power supply-related signals such as 3.3V and GND and does not replace
-those.  It's assumed each design derived from the original will use the same power and ground signals
+*eagleclone* looks for certain power supply-related signals such as 3.3V, 5.0V, VCC, VDD, and 
+GND and does not replace those.  
+
+It's assumed each design derived from the original will use the same power and ground signals
 as the original design.  This makes the instances easier to import and requires no fixup after import.
 
 Installation on OS X or Linux
@@ -188,6 +192,12 @@ The easiest way to install ruby is to use RVM:  https://rvm.io
 $ \curl -L https://get.rvm.io | bash -s stable
 $ source ~/.profile
 $ rvm install 2.0.0
+```
+
+Pull the eagledroppings directory from github to install the source:
+```bash
+$ cd <your install directory>
+$ git clone git@github.com:esawdust/eagledroppings.git
 ```
 
 Then from the directory in which you installed *eagleclone*, install the requisite gems
