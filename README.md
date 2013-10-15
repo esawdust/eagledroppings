@@ -38,7 +38,9 @@ placement, but *eagleclone* is really intended to clone fragments to create subm
 that will ultimately be integrated within a larger design.
 
 [Example Usage](#example-usage)
+
 [Use Cases](#use-cases)
+
 [Installation](#installation-on-os-x-or-linux)
 
 Alternative
