@@ -2,26 +2,7 @@ eagledroppings
 ==============
 
 Useful utilities from Landon Cox / Inhale3D.com to use with CadSoft Eagle PCB Design Software.
-
-Please see http://www.inhale3d.com for further explanation and demonstration videos.
-
-Landon Cox, elandon at esawdust.com
-
-Apache Open Source License
---------------------------
-Copyright 2013 Landon Cox
-
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
+Apache Open Source License.  Landon Cox, elandon at esawdust.com
 
 eagleclone
 ----------
@@ -30,22 +11,51 @@ board and schematic such that it can be imported multiple times into a design wi
 having to tediously fix-up all the nets, component names, and everything else to create
 a new instance of the module within your design.  
 
-Visually, it lets you take a design like this from Sparkfun (their OpAmp breakout board)
-and clone it as many times as you would like. Turn:
+Visually, it lets you take a schematic and board layout and clone it as many times 
+as you would like.  Using a Sparkfun OpAmp breakout board as an example (design released 
+under Creative Commons), turn a single design:
 
 ![Alt text](images/OriginalBoardLayout-SparkfunBOB-09816-1.jpg)
 
-into this:
+into multiple instances on the same board:
 
 ![Alt text](images/image3.jpg)
 
 where all you have left is to route the design into the master board design (route airwires.)
 
+For me, I find it easier to layout a board by laying out modules like this first and providing
+consistent entry or exit points on the module and cloning when I need multiple instances. The 
+resulting boards tend to be more consistent. Hand assembling the boards is faster as well
+because of consistent placement.
+
+Alternative
+-----------
+In EAGLE, you can copy and paste a design or portion of a design from the schematic view, but
+you end up with a pile of parts on the board layout that you have to layout again:
+
+![Alt text](images/CopyPasteFromSchematic.jpg)
+
+That's clearly not useful. In EAGLE, you can also import a board file to try to make multiple
+instances of a layout, but that results in having to rename all the nets and components.
+When you import another EAGLE drawing, you have to "Fix up" all the old and new names
+manually.  In the case of importing the OpAmp breakout a second time, some of the net names
+need to remain the same (power), and some have been changed automatically, and some 
+need to be made unique.
+
+![Alt text](images/CopyFromBoard.jpg)
+
+This gets you part of the way to a cloned design, but if the original design changes, or you
+import the design more than once, you have to go through this process for each instance which is
+also not very productive.
+
+Eagleclone deals with this stuff for you, so after you import a clone, there's no re-mapping
+of pins and parts to do - eagleclone has already renamed everything.
+
 Use Cases
 ---------
 Imagine you're designing a multi-port circuit board, say multi-input amplifier, so you 
 start by designing a single channel, schematic, and board layout for that channel. 
-Now, you can use EAGLE clone to make as many instances of this design as you want 
+Now, you can use eagleclone to make as many instances of this design as you want 
 where an instance includes both schematic and board layout, but each instance is 
 uniquely named so each channel doesn't conflict with the other when you import it into
 your master design.
@@ -157,10 +167,12 @@ eagleclone looks for certain power supply-related signals such as 3.3V and GND a
 those.  It's assumed each design derived from the original will use the same power and ground signals
 as the original design.  This makes the instances easier to import and requires no fixup after import.
 
-Installation
-------------
+Installation on OS X or Linux
+------------------------------
 
 Prerequisites are simply Ruby 2.0 and the Gems specified in the gemfile.
+Currently developed and tested on OS X and Linux.  Should work
+under Cygwin on Windows, but not tested.
 
 The easiest way to install ruby is to use RVM:  https://rvm.io
 ```bash
@@ -196,3 +208,19 @@ TODO
 1) Make eagleclone a gem.
 2) Add feature to clone one design multiple times into one file (vs one file per clone.)
 
+
+Apache Open Source License
+--------------------------
+Copyright 2013 Landon Cox
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
